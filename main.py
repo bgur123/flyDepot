@@ -3,10 +3,10 @@ from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 
-class flyDepot(QMainWindow):
+class loginWin(QMainWindow):
     
     def __init__(self,*args, **kwargs):
-        super(flyDepot, self).__init__(*args, **kwargs)
+        super(loginWin, self).__init__(*args, **kwargs)
 
         # Generate the window in the middle of the screen
         self.setGeometry((QApplication.desktop().width())/2,
@@ -43,6 +43,9 @@ class flyDepot(QMainWindow):
         if self.password.text() == "fruitflies":
             self.msgBox.setIcon(QMessageBox.Information)
             self.msgBox.setText("Login successful, welcome {s}".format(s=self.username.text()))
+            exs = flyDepot()
+            
+            
         else:
             self.msgBox.setIcon(QMessageBox.Critical)
             self.msgBox.setText("Login failed")
@@ -50,9 +53,23 @@ class flyDepot(QMainWindow):
         self.msgBox.setStandardButtons(QMessageBox.Ok | QMessageBox.Ok)
         self.msgBox.exec_()
 
+class flyDepot(QMainWindow):
+    
+    def __init__(self,*args, **kwargs):
+        super(flyDepot, self).__init__(*args, **kwargs)
+
+        # Generate the window in the middle of the screen
+        self.setGeometry((QApplication.desktop().width())/2,
+                         (QApplication.desktop().height())/2,260,160)
+        self.setWindowTitle("Fly Depot v.1")
+        self.show()
+
+        
+        
+
         
         
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    ex = flyDepot()
+    ex = loginWin()
     sys.exit(app.exec_())
